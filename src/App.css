@@ -1,38 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+    width: 100vw;
+    height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px dashed black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+@keyframes show-loader {
+    0% {
+        opacity: 0;
+        transform: translateY(-250px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
-.App-link {
-  color: #61dafb;
+@keyframes rotate-loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.circle-show{
+    animation: show-loader .5s forwards;
+}
+.circle-rotate{
+    animation: rotate-loader .5s infinite;
+}
+.circle-hide{
+    animation: show-loader .5s reverse;
+}
+.circle.exited{
+
+}
+
+/*=====================================*/
+
+.container {
+    width: 100%
+}
+
+.progressbar {
+    counter-reset: step;
+}
+
+.progressbar li{
+    list-style-type: none;
+    float: left;
+    width: 60px;
+    position: relative;
+    text-align: center;
+}
+
+.progressbar li:first-child {
+    left: 20px;
+}
+
+.progressbar li:before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    background-color: white;
+    overflow: hidden;
+}
+
+
+.scale{
+    background-color: green;
+    height: 6px;
+    position: relative;
+    top: 13px;
+    left: 50px;
+
+}
+
+.progressbar li.active {
+    color: green;
+}
+
+.progressbar li.active:before {
+    border-color: green;
+    /*background-color: green;*/
 }
